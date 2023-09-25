@@ -26,11 +26,6 @@ int main(int argc, char* argv[]) {
         // Get the next process to run based on FIFO scheduling
         pcb nextProcess = simulator.getNextProcessFIFO();
 
-        if (!nextProcess.isValid()) {
-            // Handle the case when the ready queue is empty or all processes are completed
-            break;
-        }
-
         // Execute the process and update statistics
         simulator.executeProcess(nextProcess);
     }

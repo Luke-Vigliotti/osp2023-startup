@@ -21,7 +21,16 @@ class pcb {
     osp2023::time_type total_wait_time;
     // what time was this process last on the cpu?
     osp2023::time_type last_cpu_time;
-    bool valid;
+
+    osp2023::time_type arrival_time;
+
+    osp2023::time_type turnaround_time;
+
+    osp2023::time_type waiting_time;
+
+    osp2023::time_type start_time;
+    
+    osp2023::time_type response_time;
 
    public:
     // max and min duration for a process in our system.
@@ -31,14 +40,8 @@ class pcb {
     // Constructor
     pcb(osp2023::id_type id, osp2023::time_type total_time);
 
-    pcb(osp2023::id_type processID, osp2023::time_type burstTime) {
-        this->valid = true;
-    }
-
-    bool isValid() const {
-        return valid;
-    }
-
+    pcb(osp2023::id_type processID, osp2023::time_type burstTime);
+  
     // Getter for process ID
     osp2023::id_type getID() const;
 
@@ -63,5 +66,18 @@ class pcb {
     // Update the last CPU time of the process
     void updateLastCPUTime(osp2023::time_type cpu_time);
 
-    osp2023::time_type getArrivalTime();
+    // Getter for arrival time
+    osp2023::time_type getArrivalTime() const;
+
+    // Setter for turnaround time
+    void setTurnaroundTime(osp2023::time_type turnaroundTime);
+
+    // Setter for waiting time
+    void setWaitingTime(osp2023::time_type waitingTime);
+
+    // Getter for start time
+    osp2023::time_type getStartTime() const;
+
+    // Setter for response time
+    void setResponseTime(osp2023::time_type responseTime);
 };
