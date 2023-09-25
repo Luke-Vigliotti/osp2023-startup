@@ -8,6 +8,8 @@ class Simulator {
 public:
     Simulator(); // Constructor, if needed
 
+    std::deque<pcb>& getReadyQueue();
+
     // Function to initialize the ready queue with PCB objects
     void initializeReadyQueue(const std::vector<pcb>& pcbList);
 
@@ -17,6 +19,12 @@ public:
     // Function to select the next process to run based on FIFO scheduling
     pcb getNextProcessFIFO();
 
+    // Scheduling algorithm: Shortest Job First (SJF)
+    pcb getNextProcessSJF();
+
+    // Scheduling algorithm: Round Robin (RR)
+    pcb getNextProcessRR();
+
     // Function to execute a process and update statistics
     void executeProcess(const pcb& process);
 
@@ -25,9 +33,8 @@ public:
 
 private:
     std::deque<pcb> readyQueue; // Use the appropriate data structure for your ready queue
-    // Other member variables for tracking statistics, etc.
+    std::vector<pcb> completedProcesses; // Store completed processes for statistics
 
-    // Add any other private member functions or variables as needed
 };
 
 #endif // SIMULATOR_H

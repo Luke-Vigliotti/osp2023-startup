@@ -3,6 +3,7 @@
 #include <vector>
 #include "pcb.h" // Include your PCB class header file
 #include "simulator.h" // Include your simulator class header file
+#include "loader.h"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -23,7 +24,7 @@ int main(int argc, char* argv[]) {
     // Main simulation loop
     while (!simulator.isSimulationComplete()) {
         // Get the next process to run based on FIFO scheduling
-        PCB nextProcess = simulator.getNextProcessFIFO();
+        pcb nextProcess = simulator.getNextProcessFIFO();
 
         if (!nextProcess.isValid()) {
             // Handle the case when the ready queue is empty or all processes are completed

@@ -20,9 +20,48 @@ class pcb {
     // how much time has this process spent waiting for the cpu?
     osp2023::time_type total_wait_time;
     // what time was this process last on the cpu?
+    osp2023::time_type last_cpu_time;
+    bool valid;
 
    public:
     // max and min duration for a process in our system.
     static constexpr osp2023::time_type MAX_DURATION = 100;
     static constexpr osp2023::time_type MIN_DURATION = 10;
+
+    // Constructor
+    pcb(osp2023::id_type id, osp2023::time_type total_time);
+
+    pcb(osp2023::id_type processID, osp2023::time_type burstTime) {
+        this->valid = true;
+    }
+
+    bool isValid() const {
+        return valid;
+    }
+
+    // Getter for process ID
+    osp2023::id_type getID() const;
+
+    // Getter for total time needed to run the process
+    osp2023::time_type getTotalTime() const;
+
+    // Getter for time used by the process so far
+    osp2023::time_type getTimeUsed() const;
+
+    // Setter for time used by the process
+    void setTimeUsed(osp2023::time_type time);
+
+    // Getter for total wait time of the process
+    osp2023::time_type getTotalWaitTime() const;
+
+    // Update total wait time of the process
+    void updateTotalWaitTime(osp2023::time_type wait_time);
+
+    // Getter for the last CPU time of the process
+    osp2023::time_type getLastCPUTime() const;
+
+    // Update the last CPU time of the process
+    void updateLastCPUTime(osp2023::time_type cpu_time);
+
+    osp2023::time_type getArrivalTime();
 };
