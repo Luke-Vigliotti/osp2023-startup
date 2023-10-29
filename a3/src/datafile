@@ -1,0 +1,20 @@
+alloc: 64
+alloc: 128
+alloc: 32
+alloc: 256
+dealloc
+alloc: 512
+alloc: 128
+alloc: 64
+dealloc
+dealloc
+alloc: 128
+alloc: 256
+dealloc
+dealloc
+alloc: 64
+alloc: 128
+alloc: 32
+alloc: 256
+dealloc
+dealloc

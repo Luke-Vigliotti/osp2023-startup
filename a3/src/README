@@ -1,0 +1,9 @@
+For First Fit Memory allocation:
+
+make firstfit
+./firstfit datafile
+
+For Best Fit Memory allocation:
+
+make bestfit
+./bestfit datafile

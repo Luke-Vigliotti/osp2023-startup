@@ -2,18 +2,15 @@
 
 CXX = g++
 CXXFLAGS = -Wall -Werror -std=c++20
-SRC_DIR = src
-SRC = $(wildcard $(SRC_DIR)/*.cpp)
-OBJ = $(SRC:.cpp=.o)
-EXECUTABLE = my_program
 
-all: $(EXECUTABLE)
+all: firstfit bestfit
 
-$(EXECUTABLE): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(EXECUTABLE)
+firstfit: memory_manager.cpp test_allocator.cpp
+	$(CXX) $(CXXFLAGS) -o firstfit memory_manager.cpp test_allocator.cpp -DALLOC_STRATEGY=\"firstfit\"
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+bestfit: memory_manager.cpp test_allocator.cpp
+	$(CXX) $(CXXFLAGS) -o bestfit memory_manager.cpp test_allocator.cpp -DALLOC_STRATEGY=\"bestfit\"
 
 clean:
-	rm -f $(OBJ) $(EXECUTABLE)
+	rm -f firstfit bestfit
+
